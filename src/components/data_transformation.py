@@ -1,4 +1,3 @@
-#%%
 import os,sys
 import pandas as pd
 import numpy as np
@@ -15,14 +14,14 @@ from src.exception import CustomException
 from src.utils import save_object
 
 @dataclass
-class DataTranformationConfig:
+class DataTransformationConfig:
     preprocessor_obj_path:str=os.path.join('artifacts','preprocessor.pkl')
 
-class DataTranformation:
+class DataTransformation:
     def __init__(self):
-        self.data_transformation_config = DataTranformationConfig()
+        self.data_transformation_config = DataTransformationConfig()
 
-    def get_data_trandformation_object(self):
+    def get_data_transformation_object(self):
         try:
             numerical_columns = ['reading_score', 'writing_score']
             categorical_columns = ['gender','race_ethnicity','parental_level_of_education','lunch','test_preparation_course']
@@ -59,7 +58,7 @@ class DataTranformation:
             logging.info('Read train and test data completed')
             logging.info('Obtaining  preprocessing object')
 
-            preprocessing_obj = self.get_data_trandformation_object()
+            preprocessing_obj = self.get_data_transformation_object()
 
             target_col_name='math_score'
 
@@ -87,7 +86,7 @@ class DataTranformation:
                 obj=preprocessing_obj
             )
 
-            return train_arr,test_arr, self.data_transformation_config.preprocessor_obj_path
+            return train_arr,test_arr
         
         except Exception as e:
             raise CustomException(e,sys)
