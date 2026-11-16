@@ -55,8 +55,7 @@ if __name__ == '__main__':
     train_array,test_array = data_transformation.initiate_data_transformation(train_data,test_data)
 
     model_trainer = ModelTrainer()
-    print(model_trainer.inititiate_model_trainer(train_array,test_array))
-
+    model_name, R2_score = model_trainer.inititiate_model_trainer(train_array,test_array)
+    print(f'Model Name : {model_name}, R2 Score : {round(R2_score,2)*100} %')
 
 # %%
-    
