@@ -30,6 +30,7 @@ def predict_datapoint():
             writing_score=request.form.get('writing_score')
             )
 
+
         preds_df = data.get_data_as_data_frame()
         print(preds_df)
 
